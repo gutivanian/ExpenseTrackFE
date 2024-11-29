@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://expensetrackbe-production.up.railway.app',  // Menyambungkan frontend ke backend
+      '/api': 'https://expensetrackbe-production.up.railway.app',  // Menyambungkan frontend ke backend
     },
   },
 });
