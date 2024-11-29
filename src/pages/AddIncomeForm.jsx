@@ -3,6 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';  // Import DatePicker
 import 'react-datepicker/dist/react-datepicker.css';  // Jangan lupa untuk impor CSS-nya
 import { useNavigate } from 'react-router-dom'; 
+const apiUrl = import.meta.env.VITE_API_URL;
 const AddIncomeForm = () => {
     const [kategori, setKategori] = useState('');
     const [subkategori, setSubkategori] = useState('');
@@ -23,7 +24,7 @@ const AddIncomeForm = () => {
         };
 
         try {
-            const response = await axios.post('/api/personal-income', incomeData);
+            const response = await axios.post(`${apiUrl}/personal-income`, incomeData);
             if (response.status === 201) {
                 alert('Pendapatan berhasil ditambahkan!');
             }

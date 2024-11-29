@@ -2,7 +2,7 @@ import React from 'react';
 
 const ModalManualInput = ({ isVisible, onClose, productDetails, handleInputChange, handleSaveManualProduct }) => {
     if (!isVisible) return null;
-
+    const apiUrl = import.meta.env.VITE_API_URL;
     return (
         <div className="modal show d-block" tabIndex="-1" role="dialog">
             <div className="modal-dialog" role="document">

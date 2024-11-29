@@ -3,7 +3,7 @@ import TransactionBox from './TransactionBox';
 import ModalManualInput from './ModalManualInput';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const ProductSearch = () => {
     const [transactions, setTransactions] = useState([
         {
@@ -85,7 +85,7 @@ const ProductSearch = () => {
     
         // Fetch products from API
         if (term) {
-            fetch(`/api/products?search=${term}`)
+            fetch(`${apiUrl}/products?search=${term}`)
                 .then((response) => response.json())
                 .then((data) => {
                     console.log("Fetched products:", data); // Debugging
@@ -187,7 +187,7 @@ const ProductSearch = () => {
                     date: new Date().toISOString().slice(0, 10), // Adjust date format if needed
                 };
     
-                await axios.post('/api/expenses', expenseData);
+                await axios.post(`${apiUrl}/expenses`, expenseData);
             }
     
             alert('All expenses saved successfully in queue!');
@@ -201,7 +201,7 @@ const ProductSearch = () => {
 
     const handleSaveManualProduct = async () => {
         try {
-            const response = await axios.post('/api/products', manualProductDetails);
+            const response = await axios.post(`${apiUrl}/products`, manualProductDetails);
             if (response.status === 201) {
                 alert('Manual product saved successfully!');
                 setManualProduct(false); // Tutup modal setelah berhasil

@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBox from './SearchBox';
 import axios from 'axios';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const TransactionBox = ({
     transaction,
@@ -40,7 +41,7 @@ const TransactionBox = ({
         };
 
         try {
-            const response = await axios.post('/api/expenses', expenseData);
+            const response = await axios.post(`${apiUrl}/expenses`, expenseData);
             if (response.status === 200 || response.status === 201) {
                 alert('Expense saved successfully!');
             } else {
